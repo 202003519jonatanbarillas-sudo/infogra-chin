@@ -2,92 +2,592 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi primera página</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>CBDC</title>
+
   <style>
-    body, html {
+    /* RESET CLAVE */
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
-      background: black;
+      box-sizing: border-box;
     }
-    
+
+    html, body {
+      overflow-x: hidden;
+      background: black;
+      font-family: Arial, sans-serif;
+    }
+
     .video-section {
       position: relative;
       width: 100%;
-      height: 100vh; /* cada video ocupa toda la pantalla */
+      height: 100vh;
       overflow: hidden;
     }
-    
+
     .video-section video {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* el video se ajusta sin deformarse */
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
     }
 
-.black-section {
-  width: 100%;
-  height: 100vh; /* sección negra ocupa toda la pantalla */
-  background-color: black;
-}
+    .video-title1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      background-color: rgba(0,0,0,0.75);
+      padding: 20px 40px;
+      text-align: center;
+      border-radius: 10px;
+      z-index: 2;
+      width: 70%;
+      max-width: 800px;
+    }
+
+    .video-title1 h1 {
+      color: white;
+      font-size: 3em;
+      margin: 0;
+    }
+
+    .video-title1 h2 {
+      color: white;
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .descripcion {
+      font-size: 1.75em;
+      line-height: 1.75;
+      margin-top: 10px;
+      opacity: 0.9;
+      text-align: justify;
+      color: white;
+    }
+
+    /* SECCI脫N NEGRA CORREGIDA */
+    .info-cbdc {
+      width: 100%;
+      min-height: 100vh;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      padding: 60px 40px;
+      color: white;
+      text-align: center;
+    }
+
+    .info-cbdc h2 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .info-cbdc h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .info-cbdc .intro {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+      opacity: 0.8;
+      max-width: 800px;
+    }
+
+    /* COLUMNAS */
+    .columns {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+    }
+
+    .column {
+      flex: 1 1 300px;
+      max-width: 350px;
+
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .column h3 {
+      margin-bottom: 15px;
+    }
+
+    .column ul {
+      padding-left: 20px;
+    }
+
+    .column li {
+      margin-bottom: 10px;
+    }
+
+
+	/* SECCI脫N */
+	.info-cbdc2 {
+	  width: 100%;
+	  min-height: 100vh;
+
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;   /* 馃憟 CENTRA vertical */
+	  align-items: center;       /* 馃憟 CENTRA horizontal */
+
+	  padding: 60px 40px;
+	  color: white;
+	  text-align: center;
+	}
+
+	.info-cbdc2 h2 {
+	  font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+	.info-cbdc2 h3 {
+	  font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+	/* COLUMNAS */
+	.columns2 {
+	  display: flex;
+	  justify-content: center;
+	  gap: 30px;
+	  flex-wrap: wrap;
+	  width: 100%;
+	  max-width: 1200px;
+	  margin: 40px auto;
+	}
+
+	/* CUADROS */
+	.column2 {
+	  flex: 1 1 450px;
+	  max-width: 550px;
+
+	  background: rgba(255,255,255,0.05);
+	  padding: 25px;
+	  border-radius: 10px;
+	  text-align: left;
+	}
+
+	/* T脥TULOS */
+	.column2 h3 {
+	  margin-bottom: 15px;
+	  font-size: 1.6em;
+	}
+
+	/* LISTAS */
+	.column2 ul {
+	  padding-left: 20px;
+	}
+
+	.column2 li {
+	  margin-bottom: 12px;
+	  font-size: 1.1em;
+	}	
+
+	/* L脥NEA HORIZONTAL ARRIBA */
+	.columns2 {
+	  position: relative;
+	}
+
+	.columns2::before {
+	  content: "";
+	  position: absolute;
+	  top: -30px;
+	  left: 5%;
+	  width: 90%;
+	  height: 10px;
+	  background: #39ff14;
+	  border-radius: 2px;
+	}
+
+	/* L脥NEAS VERTICALES ENTRE COLUMNAS */
+	.column2 {
+	  position: relative;
+	}
+
+	.column2:not(:last-child)::after {
+	  content: "";
+	  position: absolute;
+	  top: -30px;
+	  right: -15px;
+	  width: 4px;
+	  height: calc(100% + 30px);
+	  background: #39ff14;
+	  border-radius: 2px;
+	}
+
+    .conclusion {
+      font-size: 1.25em;
+      opacity: 0.9;
+      max-width: 800px;
+    }
+
+	/* L铆nea horizontal arriba */
+	.columns {
+	  position: relative;
+	}
+
+	.columns::before {
+	  content: "";
+	  position: absolute;
+	  top: -25px;
+	  left: 5%;
+	  width: 90%;
+	  height: 10px;
+	  background: #39ff14; /* verde brillante */
+	  border-radius: 3px;
+	}
+
+	/* L铆neas verticales entre columnas */
+	.column {
+	  position: relative;
+	}
+
+	.column:not(:last-child)::after {
+	  content: "";
+	  position: absolute;
+	  top: -15px;
+	  right: -15px;
+	  width: 4px;
+	  height: calc(100% + 20px);
+	  background: #39ff14;
+	  border-radius: 2px;
+	}
+
+	.ecuacion {
+	  font-style: italic;
+	  text-align: center;
+	  margin-top: 20px;
+	  font-size: 1.2em;
+	}
+
+	
+
+	
+	.bloques-finales .columns {
+	  display: flex;
+	  justify-content: center;  /* centra las columnas */
+	  align-items: stretch;
+	  gap: 30px;
+
+	  width: 100%;
+	  max-width: 1200px; /* 馃敟 clave para centrar visualmente */
+	  margin: 0 auto;    /* 馃敟 centra el bloque */
+	}
+	
+	.bloques-finales .column {
+	  position: relative;
+	  padding: 50px 20px 20px;
+	}
+
+	.bloques-finales .column h3 {
+	  position: absolute;
+	  top: -100px;
+	  left: 20px;
+	  background: black;
+	  padding: 5px 12px;
+	}
+
+	.bloques-finales .column {
+	  position: relative;
+	}
+
+	.bloques-finales .column::after {
+	  content: "";
+	  position: absolute;
+
+	  top: -100px;   /* 馃敟 ESTO LAS SUBE */
+	  right: -15px;
+
+	  width: 4px;
+	  height: calc(125% + 40px); /* para que crezca hacia arriba */
+
+	  background: #39ff14;
+	}
+
+	.bloques-finales .column:last-child::after {
+	  display: none;
+	}
+
   </style>
 </head>
+
 <body>
 
-  <!-- Video 1 -->
-  <section class="video-section">
-    <video autoplay muted loop playsinline>
-      <source src="https://github.com/202003519jonatanbarillas-sudo/infogra-chin/releases/download/v1/china.mp4" type="video/mp4">
-      Tu navegador no soporta video HTML5.
-    </video>
-  </section>
+<!-- VIDEO -->
+<section class="video-section">
+  <video autoplay muted loop playsinline>
+    <source src="https://github.com/202003519jonatanbarillas-sudo/infogra-chin/releases/download/v1/btc.mp4" type="video/mp4">
+  </video>
 
-  <!-- Sección negra -->
-  <section class="black-section"></section>
+  <div class="video-title1">
+    <h1>Central Bank Digital Currency</h1>
+    <h2>CBDC</h2>
+    <p class="descripcion">
+      La digitalizaci贸n financiera est谩 transformando el uso del dinero, impulsando a los bancos centrales a desarrollar monedas digitales (CBDC) como una alternativa m谩s eficiente, segura e inclusiva. En Guatemala, su implementaci贸n plantea retos y oportunidades para la inclusi贸n financiera y la estabilidad econ贸mica.
+    </p>
+  </div>
+</section>
+
+<!-- SECCI脫N NEGRA BIEN CONTENIDA -->
+<section class="info-cbdc">
+  
+  <h2>Experiencias internacionales de CBDC</h2>
+  
+  <p class="intro">
+    Cada pa铆s dise帽a su CBDC seg煤n sus condiciones econ贸micas e institucionales.
+  </p>
+
+  <div class="columns">
+
+    <div class="column">
+      <h3>China e-CNY</h3>
+      <ul>
+        <li>Integrado a sistemas digitales existentes</li>
+        <li>Uso mediante QR y billeteras digitales</li>
+        <li>Reduce la dependencia del efectivo</li>
+      </ul>
+    </div> 
+
+    <div class="column">
+      <h3>Bahamas Sand Dollar</h3>
+      <ul>
+        <li>Mejora el acceso financiero en territorios dispersos</li>
+        <li>Reduce costos de transacci贸n</li>
+        <li>Requiere cambios legales y regulatorios</li>
+      </ul>
+    </div>
+
+    <div class="column">
+	  <h3>Nigeria eNaira</h3>
+      <ul>
+        <li>Pagos m谩s r谩pidos y baratos</li>
+        <li>Apoya programas sociales</li>
+        <li>Riesgos: desintermediaci贸n bancaria, ciberseguridad y exclusi贸n digital</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p class="conclusion">
+    Las CBDC ofrecen eficiencia e inclusi贸n, pero tambi茅n implican retos tecnol贸gicos e institucionales.
+  </p>
+
+</section>
 
   <!-- Video 2 -->
   <section class="video-section">
     <video autoplay muted loop playsinline>
-      <source src="https://github.com/202003519jonatanbarillas-sudo/infogra-chin/releases/download/v1/btc.mp4" type="video/mp4">
-      Tu navegador no soporta video HTML5.
+      <source src="https://github.com/202003519jonatanbarillas-sudo/infogra-chin/releases/download/v1/china.mp4" type="video/mp4">
     </video>
+
+    <div class="video-title1">
+      <h1>CHINA</h1>
+      <h2>e-CNY</h2>
+	  <p class="descripcion">
+		El Banco Central de China desarroll贸 el e-CNY, iniciado en pruebas piloto en 2020 bajo un sistema de dos niveles, donde el banco central emite la moneda y los bancos comerciales la distribuyen al p煤blico.    </p>
+   </div>
   </section>
 
-  <!-- Sección negra -->
-  <section class="black-section"></section>
+<section class="info-cbdc2">
+
+  <h2>Implementaci贸n del e-CNY</h2>
+
+  <div class="columns2">
+
+    <!-- ETAPAS -->
+    <div class="column2">
+      <h3>Etapas</h3>
+      <ul>
+        <li><strong>Emisi贸n:</strong> El banco central crea el e-CNY y lo entrega a bancos comerciales.</li>
+        <li><strong>Distribuci贸n:</strong> Se ofrece mediante billeteras digitales a usuarios y empresas.</li>
+        <li><strong>Infraestructura:</strong> Sistema centralizado con seguridad, trazabilidad y pagos offline.</li>
+      </ul>
+    </div>
+
+    <!-- EFECTOS -->
+    <div class="column2">
+      <h3>Principales efectos</h3>
+      <ul>
+        <li>Liquidaci贸n directa en el banco central, reduciendo intermediaci贸n.</li>
+        <li>Mayor supervisi贸n del sistema financiero.</li>
+        <li>Mejor control contra lavado de dinero.</li>
+        <li>M谩s competencia frente a plataformas privadas.</li>
+        <li>Pol铆tica monetaria m谩s directa, con cautela sobre dep贸sitos.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
+
   
+
   <!-- Video 3 -->
   <section class="video-section">
     <video autoplay muted loop playsinline>
       <source src="https://github.com/202003519jonatanbarillas-sudo/infogra-chin/releases/download/v1/bahamas.mp4" type="video/mp4">
-      Tu navegador no soporta video HTML5.
     </video>
+
+    <div class="video-title1">
+      <h1>BAHAMAS</h1>
+      <h2>Sand Dollar</h2>
+	  <p class="descripcion">
+		El Central Bank of The Bahamas lanz贸 el Sand Dollar en 2020 con una estructura dise帽ada principalmente para resolver problemas de acceso financiero en regiones insulares.    </p>
+  
+    </div>
   </section>
 
-  <!-- Sección negra -->
-  <section class="black-section"></section>
-  
-  <!-- Video 4 -->
-  <section class="video-section">
-    <video autoplay muted loop playsinline>
-      <source src="https://github.com/202003519jonatanbarillas-sudo/infogra-chin/releases/download/v1/valores.mp4" type="video/mp4">
-      Tu navegador no soporta video HTML5.
-    </video>
-  </section>
+<section class="info-cbdc2">
 
-   <!-- Sección negra -->
-  <section class="black-section"></section>
-  
-  <!-- Video 3 -->
+  <h2>Implementaci贸n del Sand Dollar</h2>
+
+  <div class="columns2">
+
+    <!-- ETAPAS -->
+    <div class="column2">
+      <h3>Dise帽o del sistema</h3>
+      <ul>
+        <li><strong>Billeteras digitales:</strong> Acceso al sistema mediante wallets ofrecidas por instituciones financieras autorizadas.</li>
+        <li><strong>Identidad digital:</strong> Diferentes niveles de verificaci贸n que permiten equilibrar inclusi贸n financiera y regulaci贸n.</li>
+        <li><strong>Integraci贸n y adopci贸n:</strong> Incentivos para comercios, con menores comisiones e integraci贸n a sistemas de pago existentes.</li>
+      </ul>
+    </div>
+
+    <!-- EFECTOS -->
+    <div class="column2">
+      <h3>Principales efectos</h3>
+      <ul>
+        <li><strong>Resiliencia del sistema:</strong> Permite mantener operaciones financieras incluso ante desastres o interrupciones f铆sicas.</li>
+        <li><strong>Menor uso de efectivo:</strong> Reduce costos log铆sticos asociados al manejo de dinero f铆sico en territorios dispersos.</li>
+        <li><strong>Inclusi贸n financiera:</strong> Facilita el acceso al sistema a personas no bancarizadas mediante wallets b谩sicas.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
+ 
+  <!-- Video 5 -->
   <section class="video-section">
     <video autoplay muted loop playsinline>
       <source src="https://github.com/202003519jonatanbarillas-sudo/infogra-chin/releases/download/v1/nigeria.mp4" type="video/mp4">
-      Tu navegador no soporta video HTML5.
     </video>
+
+    <div class="video-title1">
+      <h1>NIGERIA</h1>
+      <h2>eNaira</h2>
+	  <p class="descripcion">
+		La Central Bank of Nigeria introdujo la e-Naira en 2021 con el objetivo de modernizar el sistema financiero y aumentar la inclusi贸n financiera.    </p>
+  
+La Central Bank of Nigeria introdujo la e-Naira en 2021 con el objetivo de modernizar el sistema financiero y aumentar la inclusi贸n financiera.
+
+   </div>
   </section>
+
+<section class="info-cbdc2">
+
+  <h2>Implementaci贸n del e-Naira</h2>
+  <h3>Estructura del sistema</h3>
+  <div class="columns2">
+
+    <!-- ETAPAS -->
+    <div class="column2">
+      <ul>
+        <li><strong>Plataforma centralizada:</strong> Infraestructura digital administrada por el banco central y distribuida a trav茅s de bancos comerciales.</li>
+        <li><strong>Integraci贸n bancaria:</strong> Permite convertir dep贸sitos en e-Naira, realizar pagos digitales y enviar remesas dentro del sistema.</li>
+        <li><strong>Aplicaciones oficiales:</strong> Uso mediante apps dise帽adas para usuarios y comercios.</li>
+        <li><strong>Baja adopci贸n:</strong> Preferencia por efectivo y sistemas privados limit贸 su uso.</li>
+        <li><strong>Problemas de confianza:</strong> Preocupaciones sobre vigilancia y control redujeron el inter茅s.</li>
   
-  <!-- Última sección negra -->
-  <section class="black-section"></section>
+	  </ul>
+    </div>
+
+    <!-- EFECTOS -->
+    <div class="column2">
+      <ul>
+        <li><strong>Inclusi贸n limitada:</strong>Bajo impacto debido a falta de infraestructura digital y educaci贸n financiera.</li>
+        <li><strong>Transformaci贸n del sistema monetario:</strong> Las CBDC pueden cambiar la intermediaci贸n bancaria y los mecanismos de pago.</li>
+        <li><strong>Flujos de capital:</strong> Facilitan movimientos transfronterizos, aumentando su volatilidad.</li>
+		<li><strong>Pol铆tica monetaria:</strong> Mayor sensibilidad a diferenciales de tasas, dificultando la independencia monetaria.</li>
+	 </ul>
+	</div>
+
+  </div>
+
+</section>
+
+
+
+ <!-- Video 4 -->
+  <section class="video-section">
+    <video autoplay muted loop playsinline>
+      <source src="https://github.com/202003519jonatanbarillas-sudo/infogra-chin/releases/download/v1/valores.mp4" type="video/mp4">
+    </video>
+
+    <div class="video-title1">
+      <h1>ESTUDIOS POSTERIORES</h1>
+	  <p class="descripcion">
+		El an谩lisis puede ampliarse con modelos m谩s avanzados que incorporen distintos tipos de dinero y expectativas, permitiendo evaluar mejor los efectos de las CBDC en la pol铆tica monetaria, el tipo de cambio y su adopci贸n.    </p>
   
+
+   </div>
+  </section>
+
+ <!-- SECCI脫N NEGRA BIEN CONTENIDA -->
+
+<section class="info-cbdc bloques-finales">
+  <div class="columns">
+
+    <div class="column">
+      <h3>Consideracion al implementar una CBDC</h3>
+      <ul>
+        <li>Establecer l铆mites de tenencia para evitar una desintermediaci贸n bancaria excesiva.</li>
+        <li>Calibrar cuidadosamente la tasa de inter茅s para equilibrar adopci贸n y estabilidad financiera.</li>
+        <li>Adoptar modelos h铆bridos de distribuci贸n que combinen eficiencia y estabilidad.</li>
+		<li>Priorizar la inversi贸n en ciberseguridad y resiliencia del sistema.</li>
+      </ul>
+    </div> 
+
+    <div class="column">
+      <h3>Marco regulatorio</h3>
+      <ul>
+        <li>Definir el estatus legal de los distintos tipos de dinero digital.</li>
+        <li>Establecer requisitos de capital y liquidez para intermediarios de CBDC.</li>
+        <li>Regular criptomonedas privadas sin frenar la innovaci贸n.</li>
+		<li>Implementar salvaguardas de privacidad con mecanismos contra el lavado de dinero.</li>
+      </ul>
+    </div>
+
+    <div class="column">
+	  <h3>Transici贸n del sistema monetario</h3>
+      <ul>
+        <li>Fase piloto con usuarios limitados para detectar fallas t茅cnicas y operativas.</li>
+        <li>Expansi贸n gradual ajustando l铆mites y funciones seg煤n riesgos y adopci贸n.</li>
+        <li>Convivencia con el efectivo para facilitar una transici贸n progresiva.</li>
+		<li>Monitoreo continuo de impactos en pol铆tica monetaria y estabilidad financiera.</li>
+      </ul>
+    </div>
+	</section>
 </body>
 </html>
+
+
